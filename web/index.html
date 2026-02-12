@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白银价格还能涨多久？ - 深度分析</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="logo">
+        <span class="logo-icon">🪙</span>
+        <span>白银分析</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#overview" class="active">总览</a></li>
+        <li><a href="#charts">数据图表</a></li>
+        <li><a href="#debate">多空辩论</a></li>
+        <li><a href="#article">完整报告</a></li>
+        <li><a href="#sources">数据来源</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- 英雄区域 -->
+    <section id="overview" class="hero">
+      <h1>白银价格还能涨多久？</h1>
+      <p class="subtitle">深度供需与宏观博弈分析 — 基于客观数据、看多观点、看空观点的多角度研究</p>
+      <p class="meta">📅 2026年2月12日 | 📊 深度研报</p>
+    </section>
+
+    <!-- 关键数据卡片 -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="label">COMEX 白银期货</div>
+        <div class="value" id="currentPrice">$82.30</div>
+        <div class="change down" id="priceChange">-2.12%</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">2026年供应缺口</div>
+        <div class="value" id="deficit">0.67亿盎司</div>
+        <div class="change" id="deficitYears">连续6年</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">金银比</div>
+        <div class="value" id="goldSilverRatio">60:1</div>
+        <div class="change">历史均值 59:1</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">库存覆盖率</div>
+        <div class="value" id="inventoryCoverage">14%</div>
+        <div class="change down">极度危险</div>
+      </div>
+    </div>
+
+    <!-- 图表区域 -->
+    <section id="charts" class="charts-section">
+      <h2 class="section-title">📈 关键数据可视化</h2>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>白银价格走势（美元/盎司）</h3>
+          <div class="chart-container">
+            <canvas id="priceChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>供应缺口趋势（万盎司）</h3>
+          <div class="chart-container">
+            <canvas id="deficitChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>需求结构占比</h3>
+          <div class="chart-container">
+            <canvas id="demandChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>金银比变化</h3>
+          <div class="chart-container">
+            <canvas id="ratioChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 多空辩论 -->
+    <section id="debate" class="debate-section">
+      <h2 class="section-title">⚔️ 多空辩论</h2>
+      <div class="debate-tabs">
+        <button class="debate-tab active" data-target="all">全部观点</button>
+        <button class="debate-tab bullish" data-target="bullish">📈 看多阵营</button>
+        <button class="debate-tab bearish" data-target="bearish">📉 看空阵营</button>
+      </div>
+      <div class="debate-content">
+        <div class="debate-panel bullish active">
+          <h3>🐂 看多核心论据</h3>
+          <ul class="argument-list bullish" id="bullishArguments"></ul>
+        </div>
+        <div class="debate-panel bearish active">
+          <h3>🐻 看空核心论据</h3>
+          <ul class="argument-list bearish" id="bearishArguments"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 完整文章 -->
+    <section id="article" class="article-section">
+      <h2 class="section-title">📄 完整分析报告</h2>
+      <div class="article-content">
+        <h2>1. 引言：疯狂的白银与投资者的困惑</h2>
+        <p>2026年的开局，对于全球贵金属市场而言，注定将被载入史册。在刚刚过去的1月份，白银——这位沉寂已久的"穷人的黄金"，突然撕掉了温和的面纱，上演了一场惊心动魄的过山车行情。</p>
+        <p>从年初的稳步攀升，到1月底突然爆发的逼空式暴涨，COMEX白银期货价格一度触及令人咋舌的<strong>120美元/盎司</strong>历史天价，随后又在短短数日内腰斩至75美元附近，最终在2月中旬企稳于80-85美元区间。</p>
+        
+        <h2>2. 客观数据：喧嚣背后的冷峻现实</h2>
+        <h3>2.1 价格走势</h3>
+        <p>回顾过去五年，白银走出了一条清晰的复苏曲线，并在2025-2026年进入加速期：</p>
+        <ul>
+          <li><strong>蛰伏期（2018-2022）</strong>：银价主要在15-25美元区间震荡</li>
+          <li><strong>启动期（2023-2024）</strong>：光伏需求爆发，突破30美元关口</li>
+          <li><strong>爆发期（2025年）</strong>：全年大涨148%，突破50美元历史高点</li>
+          <li><strong>狂热期（2026年初）</strong>：创下120美元盘中纪录后剧烈回调</li>
+        </ul>
+
+        <h3>2.2 供需基本面</h3>
+        <table>
+          <tr><th>指标</th><th>数值</th><th>状态</th></tr>
+          <tr><td>全球总供应</td><td>10.5亿盎司</td><td>微增</td></tr>
+          <tr><td>全球总需求</td><td>11.17亿盎司</td><td>强劲</td></tr>
+          <tr><td>供应缺口</td><td>-6700万盎司</td><td>严重短缺</td></tr>
+          <tr><td>库存覆盖率</td><td>14%</td><td>极度危险</td></tr>
+          <tr><td>工业需求占比</td><td>~60%</td><td>主导地位</td></tr>
+        </table>
+
+        <h2>3. 多空博弈的核心分歧</h2>
+        <p><strong>多头观点：</strong>供需缺口无法解决，工业需求不可逆转，库存枯竭将引发更大规模逼空，120美元只是预演。</p>
+        <p><strong>空头观点：</strong>这是典型的投机泡沫，经济衰退将扼杀工业需求，技术替代正在加速，银价将重回30美元。</p>
+
+        <h2>4. 投资启示</h2>
+        <h3>情境推演</h3>
+        <ul>
+          <li><strong>情境A（40%概率）：</strong>软着陆 → 银价60-90美元区间震荡</li>
+          <li><strong>情境B（30%概率）：</strong>滞胀 → 银价有望突破150美元</li>
+          <li><strong>情境C（30%概率）：</strong>深度衰退 → 银价可能暴跌至40-50美元</li>
+        </ul>
+
+        <h3>风险信号</h3>
+        <ul>
+          <li>警惕CME规则变更（提高保证金）</li>
+          <li>关注美元反弹（突破105则白银承压）</li>
+          <li>不要使用高杠杆（30%日内波动足以爆仓）</li>
+        </ul>
+
+        <h2>5. 结语</h2>
+        <p>白银价格还能涨多久？答案或许并不取决于白银本身，而取决于我们正处于一个怎样的时代。</p>
+        <p><strong>短期来看</strong>，由于前期涨幅过大、获利盘丰厚以及宏观经济的不确定性，白银面临剧烈的回调和震荡风险。</p>
+        <p><strong>中期来看</strong>（1-3年），只要全球库存无法得到实质性补充，且替代技术尚未大规模普及，供需缺口这一核心矛盾就无法解决。这决定了白银的底部将不断抬升。</p>
+        <p style="color: var(--gold); font-weight: bold;">白银既是魔鬼，也是天使。它能让你一夜暴富，也能让你瞬间归零。唯有敬畏市场，控制杠杆，方能在这场世纪博弈中全身而退。</p>
+      </div>
+    </section>
+
+    <!-- 数据来源 -->
+    <section id="sources" class="sources-section">
+      <h2 class="section-title">📚 数据来源</h2>
+      <div class="sources-list">
+        <ul>
+          <li>Silver Institute: World Silver Survey 2025 & 2026 Outlook</li>
+          <li>USGS: Mineral Commodity Summaries 2025</li>
+          <li>COMEX & LBMA Inventory Data (Feb 2026)</li>
+          <li>J.P. Morgan / Citi / Goldman Sachs Research Reports</li>
+          <li>Metals Focus Supply/Demand Analysis</li>
+          <li>东方财富网、新浪财经、华尔街见闻</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div class="disclaimer">
+        ⚠️ 免责声明：本页面仅供参考，不构成具体投资建议。市场有风险，投资需谨慎。
+      </div>
+      <p>© 2026 白银价格深度分析 | 数据更新于 2026年2月12日</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

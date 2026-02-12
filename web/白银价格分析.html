@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白银价格还能涨多久？ - 深度分析</title>
+  <style>
+/* 白银价格分析 - 样式文件 */
+:root {
+  --silver: #C0C0C0;
+  --silver-dark: #8B8B8B;
+  --silver-light: #E8E8E8;
+  --gold: #FFD700;
+  --gold-dark: #DAA520;
+  --bg-dark: #1a1a2e;
+  --bg-card: #16213e;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --bullish: #00d26a;
+  --bearish: #ff6b6b;
+  --border: rgba(192, 192, 192, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #0f0f23 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* 导航栏 */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--silver);
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--silver);
+}
+
+/* 主容器 */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 2rem 2rem;
+}
+
+/* 英雄区域 */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--silver) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero .subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero .meta {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* 数据卡片网格 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(192, 192, 192, 0.1);
+}
+
+.stat-card .label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--silver);
+}
+
+.stat-card .change {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.stat-card .change.up { color: var(--bullish); }
+.stat-card .change.down { color: var(--bearish); }
+
+/* 区块标题 */
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* 图表容器 */
+.charts-section {
+  margin-bottom: 3rem;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--silver-light);
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+/* 多空辩论区 */
+.debate-section {
+  margin-bottom: 3rem;
+}
+
+.debate-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.debate-tab {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.debate-tab.bullish:hover, .debate-tab.bullish.active {
+  background: var(--bullish);
+  color: white;
+}
+
+.debate-tab.bearish:hover, .debate-tab.bearish.active {
+  background: var(--bearish);
+  color: white;
+}
+
+.debate-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.debate-panel {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  display: none;
+}
+
+.debate-panel.active {
+  display: block;
+}
+
+.debate-panel.full-width {
+  grid-column: 1 / -1;
+}
+
+.debate-panel h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.debate-panel.bullish h3 { color: var(--bullish); }
+.debate-panel.bearish h3 { color: var(--bearish); }
+
+.argument-list {
+  list-style: none;
+}
+
+.argument-list li {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border-left: 3px solid;
+}
+
+.argument-list.bullish li { border-color: var(--bullish); }
+.argument-list.bearish li { border-color: var(--bearish); }
+
+.argument-list li strong {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* 文章区域 */
+.article-section {
+  margin-bottom: 3rem;
+}
+
+.article-content {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: var(--silver);
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--silver-light);
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.article-content ul, .article-content ol {
+  margin: 1rem 0 1rem 1.5rem;
+  color: var(--text-secondary);
+}
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.article-content th, .article-content td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.article-content th {
+  background: rgba(192, 192, 192, 0.1);
+  color: var(--silver);
+}
+
+/* 数据来源 */
+.sources-section {
+  margin-bottom: 3rem;
+}
+
+.sources-list {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.sources-list ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.5rem;
+}
+
+.sources-list li {
+  padding: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.sources-list li::before {
+  content: "📊 ";
+}
+
+/* 页脚 */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.disclaimer {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid var(--bearish);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: var(--bearish);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .nav-links { display: none; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .debate-content { grid-template-columns: 1fr; }
+  .container { padding: 5rem 1rem 1rem; }
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--silver-dark);
+  border-radius: 4px;
+}
+
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="logo">
+        <span class="logo-icon">🪙</span>
+        <span>白银分析</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#overview" class="active">总览</a></li>
+        <li><a href="#charts">数据图表</a></li>
+        <li><a href="#debate">多空辩论</a></li>
+        <li><a href="#article">完整报告</a></li>
+        <li><a href="#sources">数据来源</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- 英雄区域 -->
+    <section id="overview" class="hero">
+      <h1>白银价格还能涨多久？</h1>
+      <p class="subtitle">深度供需与宏观博弈分析 — 基于客观数据、看多观点、看空观点的多角度研究</p>
+      <p class="meta">📅 2026年2月12日 | 📊 深度研报</p>
+    </section>
+
+    <!-- 关键数据卡片 -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="label">COMEX 白银期货</div>
+        <div class="value" id="currentPrice">$82.30</div>
+        <div class="change down" id="priceChange">-2.12%</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">2026年供应缺口</div>
+        <div class="value" id="deficit">0.67亿盎司</div>
+        <div class="change" id="deficitYears">连续6年</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">金银比</div>
+        <div class="value" id="goldSilverRatio">60:1</div>
+        <div class="change">历史均值 59:1</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">库存覆盖率</div>
+        <div class="value" id="inventoryCoverage">14%</div>
+        <div class="change down">极度危险</div>
+      </div>
+    </div>
+
+    <!-- 图表区域 -->
+    <section id="charts" class="charts-section">
+      <h2 class="section-title">📈 关键数据可视化</h2>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>白银价格走势（美元/盎司）</h3>
+          <div class="chart-container">
+            <canvas id="priceChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>供应缺口趋势（万盎司）</h3>
+          <div class="chart-container">
+            <canvas id="deficitChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>需求结构占比</h3>
+          <div class="chart-container">
+            <canvas id="demandChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>金银比变化</h3>
+          <div class="chart-container">
+            <canvas id="ratioChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 多空辩论 -->
+    <section id="debate" class="debate-section">
+      <h2 class="section-title">⚔️ 多空辩论</h2>
+      <div class="debate-tabs">
+        <button class="debate-tab active" data-target="all">全部观点</button>
+        <button class="debate-tab bullish" data-target="bullish">📈 看多阵营</button>
+        <button class="debate-tab bearish" data-target="bearish">📉 看空阵营</button>
+      </div>
+      <div class="debate-content">
+        <div class="debate-panel bullish active">
+          <h3>🐂 看多核心论据</h3>
+          <ul class="argument-list bullish" id="bullishArguments"></ul>
+        </div>
+        <div class="debate-panel bearish active">
+          <h3>🐻 看空核心论据</h3>
+          <ul class="argument-list bearish" id="bearishArguments"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 完整文章 -->
+    <section id="article" class="article-section">
+      <h2 class="section-title">📄 完整分析报告</h2>
+      <div class="article-content">
+        <h2>1. 引言：疯狂的白银与投资者的困惑</h2>
+        <p>2026年的开局，对于全球贵金属市场而言，注定将被载入史册。在刚刚过去的1月份，白银——这位沉寂已久的"穷人的黄金"，突然撕掉了温和的面纱，上演了一场惊心动魄的过山车行情。</p>
+        <p>从年初的稳步攀升，到1月底突然爆发的逼空式暴涨，COMEX白银期货价格一度触及令人咋舌的<strong>120美元/盎司</strong>历史天价，随后又在短短数日内腰斩至75美元附近，最终在2月中旬企稳于80-85美元区间。</p>
+        
+        <h2>2. 客观数据：喧嚣背后的冷峻现实</h2>
+        <h3>2.1 价格走势</h3>
+        <p>回顾过去五年，白银走出了一条清晰的复苏曲线，并在2025-2026年进入加速期：</p>
+        <ul>
+          <li><strong>蛰伏期（2018-2022）</strong>：银价主要在15-25美元区间震荡</li>
+          <li><strong>启动期（2023-2024）</strong>：光伏需求爆发，突破30美元关口</li>
+          <li><strong>爆发期（2025年）</strong>：全年大涨148%，突破50美元历史高点</li>
+          <li><strong>狂热期（2026年初）</strong>：创下120美元盘中纪录后剧烈回调</li>
+        </ul>
+
+        <h3>2.2 供需基本面</h3>
+        <table>
+          <tr><th>指标</th><th>数值</th><th>状态</th></tr>
+          <tr><td>全球总供应</td><td>10.5亿盎司</td><td>微增</td></tr>
+          <tr><td>全球总需求</td><td>11.17亿盎司</td><td>强劲</td></tr>
+          <tr><td>供应缺口</td><td>-6700万盎司</td><td>严重短缺</td></tr>
+          <tr><td>库存覆盖率</td><td>14%</td><td>极度危险</td></tr>
+          <tr><td>工业需求占比</td><td>~60%</td><td>主导地位</td></tr>
+        </table>
+
+        <h2>3. 多空博弈的核心分歧</h2>
+        <p><strong>多头观点：</strong>供需缺口无法解决，工业需求不可逆转，库存枯竭将引发更大规模逼空，120美元只是预演。</p>
+        <p><strong>空头观点：</strong>这是典型的投机泡沫，经济衰退将扼杀工业需求，技术替代正在加速，银价将重回30美元。</p>
+
+        <h2>4. 投资启示</h2>
+        <h3>情境推演</h3>
+        <ul>
+          <li><strong>情境A（40%概率）：</strong>软着陆 → 银价60-90美元区间震荡</li>
+          <li><strong>情境B（30%概率）：</strong>滞胀 → 银价有望突破150美元</li>
+          <li><strong>情境C（30%概率）：</strong>深度衰退 → 银价可能暴跌至40-50美元</li>
+        </ul>
+
+        <h3>风险信号</h3>
+        <ul>
+          <li>警惕CME规则变更（提高保证金）</li>
+          <li>关注美元反弹（突破105则白银承压）</li>
+          <li>不要使用高杠杆（30%日内波动足以爆仓）</li>
+        </ul>
+
+        <h2>5. 结语</h2>
+        <p>白银价格还能涨多久？答案或许并不取决于白银本身，而取决于我们正处于一个怎样的时代。</p>
+        <p><strong>短期来看</strong>，由于前期涨幅过大、获利盘丰厚以及宏观经济的不确定性，白银面临剧烈的回调和震荡风险。</p>
+        <p><strong>中期来看</strong>（1-3年），只要全球库存无法得到实质性补充，且替代技术尚未大规模普及，供需缺口这一核心矛盾就无法解决。这决定了白银的底部将不断抬升。</p>
+        <p style="color: var(--gold); font-weight: bold;">白银既是魔鬼，也是天使。它能让你一夜暴富，也能让你瞬间归零。唯有敬畏市场，控制杠杆，方能在这场世纪博弈中全身而退。</p>
+      </div>
+    </section>
+
+    <!-- 数据来源 -->
+    <section id="sources" class="sources-section">
+      <h2 class="section-title">📚 数据来源</h2>
+      <div class="sources-list">
+        <ul>
+          <li>Silver Institute: World Silver Survey 2025 & 2026 Outlook</li>
+          <li>USGS: Mineral Commodity Summaries 2025</li>
+          <li>COMEX & LBMA Inventory Data (Feb 2026)</li>
+          <li>J.P. Morgan / Citi / Goldman Sachs Research Reports</li>
+          <li>Metals Focus Supply/Demand Analysis</li>
+          <li>东方财富网、新浪财经、华尔街见闻</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div class="disclaimer">
+        ⚠️ 免责声明：本页面仅供参考，不构成具体投资建议。市场有风险，投资需谨慎。
+      </div>
+      <p>© 2026 白银价格深度分析 | 数据更新于 2026年2月12日</p>
+    </footer>
+  </div>
+
+  <script>
+// 白银价格分析 - 主逻辑
+
+// 数据定义
+const silverData = {
+  // 当前价格数据
+  currentPrice: {
+    usd: 82.30,
+    cny: 20.24,
+    change24h: -2.12,
+    high52w: 120.00,
+    low52w: 25.68
+  },
+  
+  // 供需数据
+  supplyDemand: {
+    totalSupply: 10.5, // 亿盎司
+    totalDemand: 11.17,
+    deficit: -0.67, // 亿盎司
+    deficitYears: 6
+  },
+  
+  // 金银比
+  goldSilverRatio: 60,
+  
+  // 库存覆盖率
+  inventoryCoverage: 14,
+  
+  // 价格历史数据（年度）
+  priceHistory: {
+    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+    cny: [3.25, 4.20, 5.00, 5.50, 4.50, 6.00, 7.00, 12.00, 20.24],
+    usd: [15.5, 18.0, 24.0, 25.0, 21.0, 24.0, 28.0, 50.0, 82.30]
+  },
+  
+  // 供应缺口历史
+  deficitHistory: {
+    labels: ['2021', '2022', '2023', '2024', '2025', '2026(E)'],
+    values: [-5100, -5800, -6200, -6500, -11700, -6700] // 万盎司
+  },
+  
+  // 需求结构
+  demandStructure: {
+    labels: ['工业需求', '珠宝首饰', '投资需求', 'ETF'],
+    values: [59, 18, 16, 7],
+    colors: ['#4ECDC4', '#FFE66D', '#95E1D3', '#F38181']
+  },
+  
+  // 金银比历史
+  ratioHistory: {
+    labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+    values: [100, 70, 80, 75, 70, 55, 60]
+  }
+};
+
+// 看多论据
+const bullishArguments = [
+  {
+    title: "供应短缺不可逆转",
+    content: "连续6年结构性赤字，2026年预计缺口6700万盎司。全球75%白银是副产品，供给端对价格极度不敏感。"
+  },
+  {
+    title: "工业需求爆发",
+    content: "光伏用银量超8000吨/年，N型电池单位银耗增加30%-100%。AI服务器单台含银1.2公斤，新能源车用银量是燃油车的7倍。"
+  },
+  {
+    title: "库存枯竭引发逼空",
+    content: "COMEX库存覆盖率仅14%，较2020年高点蒸发70%。伦敦现货出现史无前例的溢价，实物供应极度紧张。"
+  },
+  {
+    title: "金银比均值回归",
+    content: "历史金银比均值约60:1，极端时可达30:1。若黄金维持5000美元，按40:1计算，白银可达125美元。"
+  },
+  {
+    title: "机构集体看多",
+    content: "花旗目标价150美元（3个月），高盛前董事预测150-180美元（年底），美银极端情景看至170美元。"
+  }
+];
+
+// 看空论据
+const bearishArguments = [
+  {
+    title: "经济衰退扼杀需求",
+    content: "白银60%是工业属性，经济衰退将导致工厂停工、光伏装机延后。2018年贸易战期间白银全年下跌9.3%。"
+  },
+  {
+    title: "技术替代加速",
+    content: "电镀铜、银包铜技术正在研发，预计2027-2028年大规模商用。每公斤2.3万元的银价已逼近产业承受极限。"
+  },
+  {
+    title: "投机泡沫风险",
+    content: "白银波动率一度突破1800%，CME多次上调保证金。ETF持仓占比超40%，高度一致的市场情绪易引发雪崩式抛售。"
+  },
+  {
+    title: "历史泡沫教训",
+    content: "1980年亨特兄弟事件后3个月暴跌78%，2011年触顶后大幅回撤。当前走势与2011年泡沫破裂前夕惊人相似。"
+  },
+  {
+    title: "美联储政策风险",
+    content: "若美联储停止降息或重启加息，将直接击碎贵金属的货币溢价。美元走强直接压低以美元计价的白银。"
+  }
+];
+
+// 初始化图表
+let priceChart, deficitChart, demandChart, ratioChart;
+
+function initCharts() {
+  // 价格走势图
+  const priceCtx = document.getElementById('priceChart').getContext('2d');
+  priceChart = new Chart(priceCtx, {
+    type: 'line',
+    data: {
+      labels: silverData.priceHistory.labels,
+      datasets: [{
+        label: '美元/盎司',
+        data: silverData.priceHistory.usd,
+        borderColor: '#C0C0C0',
+        backgroundColor: 'rgba(192, 192, 192, 0.1)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.1)' },
+          ticks: { color: '#a0a0a0' }
+        },
+        x: {
+          grid: { color: 'rgba(255,255,255,0.1)' },
+          ticks: { color: '#a0a0a0' }
+        }
+      }
+    }
+  });
+
+  // 供应缺口图
+  const deficitCtx = document.getElementById('deficitChart').getContext('2d');
+  deficitChart = new Chart(deficitCtx, {
+    type: 'bar',
+    data: {
+      labels: silverData.deficitHistory.labels,
+      datasets: [{
+        label: '供应缺口（万盎司）',
+        data: silverData.deficitHistory.values,
+        backgroundColor: '#ff6b6b',
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.1)' },
+          ticks: { color: '#a0a0a0' }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { color: '#a0a0a0' }
+        }
+      }
+    }
+  });
+
+  // 需求结构饼图
+  const demandCtx = document.getElementById('demandChart').getContext('2d');
+  demandChart = new Chart(demandCtx, {
+    type: 'doughnut',
+    data: {
+      labels: silverData.demandStructure.labels,
+      datasets: [{
+        data: silverData.demandStructure.values,
+        backgroundColor: silverData.demandStructure.colors,
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { color: '#a0a0a0' }
+        }
+      }
+    }
+  });
+
+  // 金银比走势图
+  const ratioCtx = document.getElementById('ratioChart').getContext('2d');
+  ratioChart = new Chart(ratioCtx, {
+    type: 'line',
+    data: {
+      labels: silverData.ratioHistory.labels,
+      datasets: [{
+        label: '金银比',
+        data: silverData.ratioHistory.values,
+        borderColor: '#FFD700',
+        backgroundColor: 'rgba(255, 215, 0, 0.1)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.1)' },
+          ticks: { color: '#a0a0a0' }
+        },
+        x: {
+          grid: { color: 'rgba(255,255,255,0.1)' },
+          ticks: { color: '#a0a0a0' }
+        }
+      }
+    }
+  });
+}
+
+// 渲染看多看空论据
+function renderArguments() {
+  const bullishList = document.getElementById('bullishArguments');
+  const bearishList = document.getElementById('bearishArguments');
+  
+  bullishList.innerHTML = bullishArguments.map(arg => `
+    <li>
+      <strong>📈 ${arg.title}</strong>
+      ${arg.content}
+    </li>
+  `).join('');
+  
+  bearishList.innerHTML = bearishArguments.map(arg => `
+    <li>
+      <strong>📉 ${arg.title}</strong>
+      ${arg.content}
+    </li>
+  `).join('');
+}
+
+// 辩论Tab切换
+function initDebateTabs() {
+  const tabs = document.querySelectorAll('.debate-tab');
+  const panels = document.querySelectorAll('.debate-panel');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      panels.forEach(panel => {
+        if (target === 'all') {
+          panel.classList.add('active');
+          panel.classList.remove('full-width');
+        } else if (panel.classList.contains(target)) {
+          panel.classList.add('active');
+          panel.classList.add('full-width');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    });
+  });
+}
+
+// 平滑滚动
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+}
+
+// 导航高亮
+function initNavHighlight() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+}
+
+// 更新统计卡片
+function updateStats() {
+  document.getElementById('currentPrice').textContent = `$${silverData.currentPrice.usd}`;
+  document.getElementById('priceChange').textContent = `${silverData.currentPrice.change24h}%`;
+  document.getElementById('priceChange').className = 'change ' + (silverData.currentPrice.change24h >= 0 ? 'up' : 'down');
+  
+  document.getElementById('deficit').textContent = `${Math.abs(silverData.supplyDemand.deficit)}亿盎司`;
+  document.getElementById('deficitYears').textContent = `连续${silverData.supplyDemand.deficitYears}年`;
+  
+  document.getElementById('goldSilverRatio').textContent = `${silverData.goldSilverRatio}:1`;
+  document.getElementById('inventoryCoverage').textContent = `${silverData.inventoryCoverage}%`;
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', () => {
+  updateStats();
+  initCharts();
+  renderArguments();
+  initDebateTabs();
+  initSmoothScroll();
+  initNavHighlight();
+});
+
+</script>
+</body>
+</html>

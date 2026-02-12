@@ -1,0 +1,405 @@
+/* 白银价格分析 - 样式文件 */
+:root {
+  --silver: #C0C0C0;
+  --silver-dark: #8B8B8B;
+  --silver-light: #E8E8E8;
+  --gold: #FFD700;
+  --gold-dark: #DAA520;
+  --bg-dark: #1a1a2e;
+  --bg-card: #16213e;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --bullish: #00d26a;
+  --bearish: #ff6b6b;
+  --border: rgba(192, 192, 192, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #0f0f23 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* 导航栏 */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--silver);
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--silver);
+}
+
+/* 主容器 */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 2rem 2rem;
+}
+
+/* 英雄区域 */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--silver) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero .subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero .meta {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* 数据卡片网格 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(192, 192, 192, 0.1);
+}
+
+.stat-card .label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--silver);
+}
+
+.stat-card .change {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.stat-card .change.up { color: var(--bullish); }
+.stat-card .change.down { color: var(--bearish); }
+
+/* 区块标题 */
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* 图表容器 */
+.charts-section {
+  margin-bottom: 3rem;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--silver-light);
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+/* 多空辩论区 */
+.debate-section {
+  margin-bottom: 3rem;
+}
+
+.debate-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.debate-tab {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.debate-tab.bullish:hover, .debate-tab.bullish.active {
+  background: var(--bullish);
+  color: white;
+}
+
+.debate-tab.bearish:hover, .debate-tab.bearish.active {
+  background: var(--bearish);
+  color: white;
+}
+
+.debate-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.debate-panel {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  display: none;
+}
+
+.debate-panel.active {
+  display: block;
+}
+
+.debate-panel.full-width {
+  grid-column: 1 / -1;
+}
+
+.debate-panel h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.debate-panel.bullish h3 { color: var(--bullish); }
+.debate-panel.bearish h3 { color: var(--bearish); }
+
+.argument-list {
+  list-style: none;
+}
+
+.argument-list li {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border-left: 3px solid;
+}
+
+.argument-list.bullish li { border-color: var(--bullish); }
+.argument-list.bearish li { border-color: var(--bearish); }
+
+.argument-list li strong {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* 文章区域 */
+.article-section {
+  margin-bottom: 3rem;
+}
+
+.article-content {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: var(--silver);
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--silver-light);
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.article-content ul, .article-content ol {
+  margin: 1rem 0 1rem 1.5rem;
+  color: var(--text-secondary);
+}
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.article-content th, .article-content td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.article-content th {
+  background: rgba(192, 192, 192, 0.1);
+  color: var(--silver);
+}
+
+/* 数据来源 */
+.sources-section {
+  margin-bottom: 3rem;
+}
+
+.sources-list {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.sources-list ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.5rem;
+}
+
+.sources-list li {
+  padding: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.sources-list li::before {
+  content: "📊 ";
+}
+
+/* 页脚 */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.disclaimer {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid var(--bearish);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: var(--bearish);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .nav-links { display: none; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .debate-content { grid-template-columns: 1fr; }
+  .container { padding: 5rem 1rem 1rem; }
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--silver-dark);
+  border-radius: 4px;
+}
